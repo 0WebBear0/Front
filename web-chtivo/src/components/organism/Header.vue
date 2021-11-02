@@ -32,7 +32,7 @@
 
         <a :href="userSettings" class="nullification" style="display: flex;" >
             <q-icon :name="avatar" size="150%" style="margin-right: 65%"/>
-            <q-item-label style="margin-top: 3px">{{name}}</q-item-label>
+            <q-item-label style="margin-top: 3px"></q-item-label>
         </a>
 
         <q-icon @click="toggleLeftDrawer" name="menu" size="150%" class="nullification"/>
