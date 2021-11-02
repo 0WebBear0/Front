@@ -2,22 +2,25 @@
 const routes = [
   {
     path: '/',
-    component: () => import('components/pages/HomePages/Home'),
-    // children: [
-    //   { path: '', component: () => import('components/molecule') }
-    // ]
-  },
-  {
-    path: '/MyTitles',
-    component: () => import('components/pages/HomePages/MyTitles'),
-  },
-  {
-    path: '/AllTitles',
-    component: () => import('components/pages/HomePages/AllTitles'),
-  },
-  {
-    path: '/Schedule',
-    component: () => import('components/pages/HomePages/Schedule'),
+    component: () => import('components/pages/HomePages/MainHomePage'),
+    children: [
+      {
+        path: '/home',
+        component: () => import('components/templates/HomePages/Home')
+      },
+      {
+        path: '/MyTitles',
+        component: () => import('components/templates/HomePages/MyTitles'),
+      },
+      {
+        path: '/AllTitles',
+        component: () => import('components/templates/HomePages/AllTitles'),
+      },
+      {
+        path: '/Schedule',
+        component: () => import('components/templates/HomePages/Schedule'),
+      },
+    ]
   },
   // Always leave this as last one,
   // but you can also remove it

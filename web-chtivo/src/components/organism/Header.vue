@@ -57,7 +57,7 @@ const linksList = [
   {
     title: 'Главная',
     icon: 'home',
-    link: '/'
+    link: '/home'
   },
   {
     title: 'Мои тайтлы',
