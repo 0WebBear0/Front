@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <Header avatar="account_circle" name="Schedule" user-settings="/home"/>
+    <Header avatar="account_circle" name="Hello" user-settings="/Settings"/>
     <ContentLayout>
         <router-view/>
     </ContentLayout>

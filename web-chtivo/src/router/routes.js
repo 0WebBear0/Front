@@ -5,7 +5,7 @@ const routes = [
     component: () => import('components/pages/HomePages/MainHomePage'),
     children: [
       {
-        path: '/home',
+        path: '/',
         component: () => import('components/templates/HomePages/Home')
       },
       {

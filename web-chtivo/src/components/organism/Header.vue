@@ -1,22 +1,34 @@
 <template>
   <q-header elevated>
     <q-toolbar>
-      <q-btn
-        flat
-        dense
-        round
-        icon="menu"
-        color="white"
-        aria-label="Menu"
-        @click="toggleLeftDrawer"
-        class="drawer"
-      />
+      <div class="drawer HeaderLayout">
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          color="white"
+          aria-label="Menu"
+          @click="toggleLeftDrawer"
+        />
+
+        <q-item-label>WebChtivo</q-item-label>
+
+        <a :href="userSettings" class="nullification UserLabelOnHeader" >
+          <q-icon :name="avatar" size="150%" class="UserLabelOnHeader-icon"/>
+          <q-item-label class="roundByImg">{{name[0]}}</q-item-label>
+        </a>
+      </div>
 
       <q-toolbar-title class="headerDesktop">
           <div v-for="link in essentialLinks" :key="link.title" v-bind="link">
               <q-item clickable tag="a" :href="link.link">{{link.title}}</q-item>
           </div>
 
+              <a :href="userSettings" class="nullification UserLabelOnHeader" >
+                <q-icon :name="avatar" size="150%" class="UserLabelOnHeader-icon"/>
+                <q-item-label class="roundByImg">{{name}}</q-item-label>
+              </a>
       </q-toolbar-title>
 
     </q-toolbar>
@@ -25,26 +37,20 @@
   <q-drawer
     v-model="leftDrawerOpen"
     bordered
+    overlay
     class="drawer"
   >
-    <q-list>
-      <q-item class="UserLabel">
+    <div class="layoutGrid">
+      <q-list>
+        <EssentialLink
+          v-for="link in essentialLinks"
+          :key="link.title"
+          v-bind="link"
+        />
+      </q-list>
+      <q-icon @click="toggleLeftDrawer" color="black" name="menu" size="150%" class="nullification Brg"/>
 
-        <a :href="userSettings" class="nullification" style="display: flex;" >
-            <q-icon :name="avatar" size="150%" style="margin-right: 65%"/>
-            <q-item-label style="margin-top: 3px"></q-item-label>
-        </a>
-
-        <q-icon @click="toggleLeftDrawer" name="menu" size="150%" class="nullification"/>
-
-      </q-item>
-
-      <EssentialLink
-        v-for="link in essentialLinks"
-        :key="link.title"
-        v-bind="link"
-      />
-    </q-list>
+    </div>
   </q-drawer>
 </template>
 
@@ -57,7 +63,7 @@ const linksList = [
   {
     title: 'Главная',
     icon: 'home',
-    link: '/home'
+    link: '/'
   },
   {
     title: 'Мои тайтлы',
@@ -115,27 +121,44 @@ export default defineComponent({
 </script>
 
 <style scoped>
- .nullification{
-   color: black;
-   text-decoration: none;
-   cursor: pointer;
- }
- .UserLabel{
+ .UserLabelOnHeader{
    display: flex;
-   justify-content: space-between;
-   align-items: center;
+   justify-content: center;
+   padding: 8px 16px;
+ }
+ .UserLabelOnHeader-icon{
+   margin-right: 15%;
  }
  .headerDesktop{
    display: flex;
    flex-direction: row;
    justify-content: space-evenly;
  }
+ .HeaderLayout{
+   width: 100%;
+   font-size: clamp(14px,5vw,16px);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+ }
+ .layoutGrid{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+ }
+ .Brg{
+   padding-top: 13px;
+   padding-right: 20px;
+ }
+ .roundByImg{
+   margin-top: 3px;
+ }
  @media (min-width: 1024px) {
    .drawer{
      display: none;
    }
  }
- @media (max-width: 1024px) {
+ @media (max-width: 1023px) {
    .headerDesktop{
      display: none;
    }
