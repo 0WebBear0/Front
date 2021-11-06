@@ -1,7 +1,10 @@
 <template>
 <!--  <Cards link="/MyTitles" title="Test" description="Test description for checked workable"  />-->
-  <div class="row items-start q-gutter-md justify-center LayoutStyle">
-    <CardContainer/>
+  <div>
+    <CardContainer name="Популярные тайтлы"/>
+
+    <CardContainer name="Популярные тайтлы"/>
+
   </div>
 </template>
 

@@ -1,17 +1,17 @@
 <template>
-  <q-card class="MyCard">
-    <q-img class="MyCard" src="https://cdn.quasar.dev/img/parallax2.jpg">
+  <q-card class="MyCard" tag="a" :href="link">
+    <q-img class="MyCardImg" :src="img">
       <div class="absolute-top text TitleName nullification">
-        Title
+        {{title}}
       </div>
-      <div class="absolute-center text TitleEnd nullification">
-            End
+      <div v-if="end" class="absolute-center text TitleEnd nullification">
+            <q-icon name="done_all" size="300%"/>
       </div>
       <div class="absolute-bottom-left text TitleViews nullification">
-        Views
+        {{ view }}
       </div>
       <div class="absolute-bottom-right text TitleLike nullification">
-        Like
+        {{ like }}
       </div>
     </q-img>
   </q-card>
@@ -24,33 +24,53 @@ export default defineComponent({
   name: 'Cards',
   setup () {
     return {
-      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    }
+  },
+  props: {
+    title: {
+      type: String,
+      required: true
+    },
+    like: {
+      type: Number,
+      required: true
+    },
+    view: {
+      type: Number,
+      required: true
+    },
+    end: {
+      type: Boolean,
+      required: true
+    },
+    link: {
+      type: String,
+      default: '#'
+    },
+    img: {
+      type: String,
+      default: ''
     }
   }
-  // props: {
-  //   title: {
-  //     type: String,
-  //     required: true
-  //   },
-  //   description: {
-  //     type: String,
-  //     required: true
-  //   },
-  //   link: {
-  //     type: String,
-  //     default: '#'
-  //   },
-  //   img: {
-  //     type: String,
-  //     default: ''
-  //   }
-  // }
 })
 </script>
 <style>
-  .MyCard {
-    width: clamp(80px, 20vw, 120px);
-    height: clamp(120px, 30vw, 180px);
+  .MyCardImg {
+    transition-duration: 0.3s;
+    width: clamp(90px, 20vw, 120px);
+    height: clamp(135px, 30vw, 180px);
+  }
+  .MyCard{
+    transition-duration: 0.5s;
+    box-shadow: 6px 4px 3px 2px rgba(0, 0, 255, .2);
+  }
+  .MyCard:hover {
+    transition-duration: 0.3s;
+    transform: scale(0.96);
+  }
+  .MyCard:active {
+    transition-duration: 0.2s;
+    transform: rotate(5deg);
   }
   .TitleName{
     display: flex;
@@ -59,7 +79,7 @@ export default defineComponent({
     font-size: clamp(10px,4vh,20px);
   }
   .TitleEnd{
-    font-size: clamp(17px,4vw,27px);
+    font-size: clamp(17px,4vw,22px);
     display: flex;
     justify-content: center;
     background-color: transparent !important;

@@ -1,5 +1,5 @@
 <template>
-  <q-header elevated>
+  <q-header elevated reveal>
     <q-toolbar>
       <div class="drawer HeaderLayout">
         <q-btn
