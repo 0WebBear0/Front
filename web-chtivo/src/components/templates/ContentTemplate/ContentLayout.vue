@@ -1,7 +1,7 @@
 <template>
   <q-page-container class="row">
-    <div class= "col-xs-1 col-sm-2 col-md-3 col-lg-4"></div>
-    <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4 ">
+    <div class= "col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>
+    <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6 ">
       <slot></slot>
     </div>
   </q-page-container>
