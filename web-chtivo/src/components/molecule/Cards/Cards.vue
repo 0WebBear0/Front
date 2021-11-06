@@ -1,15 +1,4 @@
 <template>
-<!--  <q-card class="my-card" tag="a" :href="link">-->
-<!--    <q-img :src="img">-->
-<!--      <div class="absolute-bottom text-h6">-->
-<!--        {{title}}-->
-<!--      </div>-->
-<!--    </q-img>-->
-
-<!--    <q-card-section class="n">-->
-<!--      {{ description }}-->
-<!--    </q-card-section>-->
-<!--  </q-card>-->
   <q-card class="MyCard">
     <q-img class="MyCard" src="https://cdn.quasar.dev/img/parallax2.jpg">
       <div class="absolute-top text TitleName nullification">
@@ -70,7 +59,7 @@ export default defineComponent({
     font-size: clamp(10px,4vh,20px);
   }
   .TitleEnd{
-    font-size: clamp(20px,6vh,30px);
+    font-size: clamp(17px,4vw,27px);
     display: flex;
     justify-content: center;
     background-color: transparent !important;

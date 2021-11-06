@@ -1,36 +1,20 @@
 <template>
 <!--  <Cards link="/MyTitles" title="Test" description="Test description for checked workable"  />-->
   <div class="row items-start q-gutter-md justify-center LayoutStyle">
-    <Cards
-      description="Test description for checked workable"
-      title="Test"
-    />
-    <Cards
-      description="Test description for checked workable"
-      title="Test"
-    />
-    <Cards
-      class=""
-      description="Test description for checked workable"
-      title="Test"
-    />
-    <Cards
-      class=""
-      description="Test description for checked workable"
-      title="Test"
-    />
+    <CardContainer/>
   </div>
 </template>
 
 <script>
 
 import {defineComponent} from "vue";
-import Cards from "components/molecule/Cards/Cards";
+import CardContainer from "components/organism/CardContainer";
 
 export default defineComponent({
   name: 'Home',
   components: {
-    Cards
+    CardContainer
+
   },
 })
 </script>

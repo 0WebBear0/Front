@@ -1,4 +1,6 @@
+@import "font/Montserrat/stylesheet.css";
 body{
+  font-family: "Montserrat";
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -8,5 +10,11 @@ body{
     color: white;
     text-decoration: none;
     cursor: pointer;
+  }
+  .AllContainer{
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: clamp(4px,1vw,6px);
+    padding: 10px 10px 20px 10px;
   }
 }
