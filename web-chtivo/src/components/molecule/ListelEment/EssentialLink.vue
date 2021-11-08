@@ -3,6 +3,7 @@
     clickable
     tag="a"
     :href="link"
+    class="titleName"
   >
     <q-item-section
       v-if="icon"
@@ -39,3 +40,8 @@ export default defineComponent({
   }
 })
 </script>
+<style>
+  .titleName{
+    border-radius: 5px;
+  }
+</style>

@@ -1,9 +1,13 @@
 <template>
   <div class="q-page-container ContainerPopular AllContainer">
 
-    <div class="LabelName">
-      {{name}}
+    <div class="LabelNameContainer">
+      <div class="LabelName">
+        {{name}}
+      </div>
+      <div v-if="displayType === 'Genres'" class="LabelName randomGenre">{{randomGenre}}</div>
     </div>
+
     <q-separator spaced />
     <div class="LabelItem row items-start q-gutter-md justify-center LayoutStyle">
       <Cards
@@ -15,6 +19,8 @@
         :link="title.link"
         :view="title.view"
         :img="title.img"
+        :description="title.description"
+        :author-name="title.authorName"
       />
     </div>
   </div>
@@ -26,6 +32,9 @@ import Cards from "components/molecule/Cards/Cards";
 
 import {defineComponent} from "vue";
 
+const Hours = new Date().getHours()
+const GetCountGenre = Hours % 10
+
 export default defineComponent({
   name: 'CardContainer',
   components: {
@@ -35,7 +44,15 @@ export default defineComponent({
     name: {
       type: String,
       required: true
-    }
+    },
+    displayType: {
+      type: String,
+      required: true
+    },
+    // renderTitle: {
+    //   type: Object,
+    //   required: true
+    // }
   },
   setup(){
     return{
@@ -47,7 +64,20 @@ export default defineComponent({
           title: "Test1",
           like: 10,
           view: 100,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
           end: true,
+          authorName: "Jhon",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
         },
         {
           id: 0,
@@ -56,7 +86,20 @@ export default defineComponent({
           title: "Test1",
           like: 10,
           view: 100,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
           end: true,
+          authorName: "Jhon",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
         },
         {
           id: 0,
@@ -65,7 +108,20 @@ export default defineComponent({
           title: "Test1",
           like: 10,
           view: 100,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
           end: true,
+          authorName: "Jhon",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
         },
         {
           id: 0,
@@ -74,81 +130,24 @@ export default defineComponent({
           title: "Test1",
           like: 10,
           view: 100,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
           end: true,
+          authorName: "Jhon",
         },
         {
           id: 1,
           img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
+          link: "/test123",
           title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
         },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test1",
-          title: "Test2",
-          like: 100,
-          view: 1000,
-          end: false
-        },
-      ]
+
+      ],
+      randomGenre: GetCountGenre,
     }
   }
 })
@@ -166,6 +165,13 @@ export default defineComponent({
   }
   .LabelItem{
     align-items: center;
-
+  }
+  .LabelNameContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .randomGenre{
+    color: rgba(0,0,0,0.6);
   }
 </style>

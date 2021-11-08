@@ -1,11 +1,6 @@
 <template>
-<!--  <Cards link="/MyTitles" title="Test" description="Test description for checked workable"  />-->
-  <div>
     <CardContainer name="Популярные тайтлы"/>
-
-    <CardContainer name="Популярные тайтлы"/>
-
-  </div>
+    <CardContainer name="Лучшие в своём жанре" display-type="Genres"/>
 </template>
 
 <script>
@@ -23,8 +18,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .LayoutStyle{
-    padding: 0;
-    margin: 0;
-  }
+
 </style>

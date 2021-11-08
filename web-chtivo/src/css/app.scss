@@ -18,5 +18,25 @@ body{
     border: 2px solid transparent;
     border-radius: clamp(4px,1vw,6px);
     padding: 10px 10px 20px 10px;
+    margin-top: 20px;
+  }
+  .Mobile{
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .Desktop{
+      display: flex;
+    }
+    .Mobile{
+      display: none;
+    }
+  }
+  @media (max-width: 1023px) {
+    .Mobile{
+      display: flex;
+    }
+    .Desktop{
+      display: none;
+    }
   }
 }

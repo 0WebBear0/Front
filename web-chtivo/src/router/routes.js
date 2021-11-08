@@ -16,11 +16,11 @@ const routes = [
         path: '/AllTitles',
         component: () => import('components/templates/HomePages/AllTitles'),
       },
-      {
-        path: '/Schedule',
-        component: () => import('components/templates/HomePages/Schedule'),
-      },
     ]
+  },
+  {
+    path: '/Schedule',
+    component: () => import('components/templates/HomePages/Schedule'),
   },
   // Always leave this as last one,
   // but you can also remove it

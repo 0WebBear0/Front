@@ -13,6 +13,14 @@
       <div class="absolute-bottom-right text TitleLike nullification">
         {{ like }}
       </div>
+        <div class="Description bg-blue-grey-1 text-black absolute">
+          <div class="MainInfoTitles">
+            <div class="TitleNameDescription">{{title}}</div>
+            <div class="authorName">{{authorName}}</div>
+            <q-separator />
+          </div>
+          {{description}}
+        </div>
     </q-img>
   </q-card>
 </template>
@@ -28,6 +36,14 @@ export default defineComponent({
   },
   props: {
     title: {
+      type: String,
+      required: true
+    },
+    authorName: {
+      type: String,
+      required: true
+    },
+    description:{
       type: String,
       required: true
     },
@@ -61,16 +77,16 @@ export default defineComponent({
     height: clamp(135px, 30vw, 180px);
   }
   .MyCard{
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     box-shadow: 6px 4px 3px 2px rgba(0, 0, 255, .2);
   }
-  .MyCard:hover {
+  .MyCard:active {
     transition-duration: 0.3s;
     transform: scale(0.96);
   }
-  .MyCard:active {
-    transition-duration: 0.2s;
-    transform: rotate(5deg);
+  .MyCard:hover .Description{
+    transition: all 2s linear;
+    display: flex;
   }
   .TitleName{
     display: flex;
@@ -94,6 +110,30 @@ export default defineComponent({
     border-radius: 2px;
   }
   .Description{
+    transition-duration: 0.3s;
+    padding: 0 clamp(5px,3vw,10px) 0 clamp(5px,3vw,10px) !important;
+    color: #263238;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fffde7;
     font-size: clamp(8px,3vw,12px);
+    display: none;
+  }
+  .MainInfoTitles{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+  }
+  .TitleNameDescription{
+    padding-top: 0;
+    color: black;
+    font-size: clamp(10px,5vw,15px);
+  }
+  .authorName{
+    color: black;
+    font-style: italic;
+    font-size: clamp(8px,4vw,13px);
   }
 </style>

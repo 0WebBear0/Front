@@ -1,5 +1,5 @@
 <template>
-  <q-header elevated reveal>
+  <q-header class="header" elevated reveal>
     <q-toolbar>
       <div class="drawer HeaderLayout">
         <q-btn
@@ -32,6 +32,27 @@
       </q-toolbar-title>
 
     </q-toolbar>
+
+    <q-tabs v-model="tab" class="HeaderTab Desktop" v-if="downSideBar" >
+      <q-tab
+           v-for="(data,key) in daysOfTheWeek"
+           :key="data.day"
+           @click="getSelectedDay(key)"
+           class="tabItem"
+           :name="data.day"
+           :label="data.day"
+      />
+    </q-tabs>
+
+    <q-tabs v-model="tab" class="HeaderTab Mobile" v-if="downSideBar" >
+      <q-tab
+        v-for="(data,key) in daysOfTheWeekShort"
+        :key="data.day"
+        @click="getSelectedDay(key)"
+        class="tabItem nullification"
+        :name="data.day"
+        :label="data.day"/>
+    </q-tabs>
   </q-header>
 
   <q-drawer
@@ -82,6 +103,10 @@ const linksList = [
   },
 ];
 
+const daysOfTheWeek = [{day: "Понедельник"}, {day: "Вторник"}, {day: "Среда"}, {day: "Четверг"}, {day: "Пятница"}, {day: "Суббота"}, {day: "Воскресенье"}]
+
+const daysOfTheWeekShort = [{day: "Пон"}, {day: "Вт"}, {day: "Ср"}, {day: "Чет"}, {day: "Пят"}, {day: "Суб"}, {day: "Вос"}]
+
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
@@ -104,23 +129,39 @@ export default defineComponent({
     userSettings: {
       type: String,
       required: true
-    }
+    },
+    downSideBar: {
+      type: Boolean,
+      required: true
+    },
   },
   setup () {
     const leftDrawerOpen = ref(false)
 
     return {
       essentialLinks: linksList,
+      daysOfTheWeek: daysOfTheWeek,
+      daysOfTheWeekShort:daysOfTheWeekShort,
+
       leftDrawerOpen,
+
+      tab: ref('Понедельник'),
+
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
-      }
+      },
+      getSelectedDay(key) {
+        this.$emit('getSelectedDay',daysOfTheWeek[key].day)
+      },
     }
   }
 })
 </script>
 
 <style scoped>
+  .header{
+    background-color: rgba(0,0,0,0.7);
+  }
  .UserLabelOnHeader{
    display: flex;
    justify-content: center;
@@ -152,6 +193,10 @@ export default defineComponent({
  }
  .roundByImg{
    margin-top: 3px;
+ }
+ .tabItem{
+   border-radius: 5px;
+   font-size: clamp(14px,5vw,16px);
  }
  @media (min-width: 1024px) {
    .drawer{
