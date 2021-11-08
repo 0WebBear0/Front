@@ -70,7 +70,7 @@ export default defineComponent({
   }
 })
 </script>
-<style>
+<style scoped>
   .MyCardImg {
     transition-duration: 0.3s;
     width: clamp(90px, 20vw, 120px);
@@ -78,7 +78,7 @@ export default defineComponent({
   }
   .MyCard{
     transition-duration: 0.3s;
-    box-shadow: 6px 4px 3px 2px rgba(0, 0, 255, .2);
+    box-shadow: 6px 4px 5px 2px rgba(0, 0, 0, .2);
   }
   .MyCard:active {
     transition-duration: 0.3s;

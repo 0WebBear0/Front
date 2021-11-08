@@ -10,7 +10,7 @@ export default defineComponent({
   name: 'App',
   setup () {
     const $q = useQuasar()
-    $q.dark.set(true)
+    $q.dark.set(false)
   }
 })
 </script>

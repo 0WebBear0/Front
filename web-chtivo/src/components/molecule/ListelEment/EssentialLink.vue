@@ -40,7 +40,7 @@ export default defineComponent({
   }
 })
 </script>
-<style>
+<style scoped>
   .titleName{
     border-radius: 5px;
   }

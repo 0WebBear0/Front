@@ -2,14 +2,23 @@
   <q-list class="q-page-container AllContainer">
 
     <q-item class="LabelNameContainer">
-      <div class="LabelName">
+
+      <q-item-section class="LabelName">
         {{name}}
-      </div>
-      <q-item-label v-if="displayType === 'Genres'" class="LabelName randomGenre">{{randomGenre}}</q-item-label>
+      </q-item-section>
+
+      <q-item-section
+        align="right"
+        v-if="displayType === 'Genres'"
+        class="LabelName randomGenre"
+      >
+        {{randomGenre}}
+      </q-item-section>
+
     </q-item>
 
     <q-separator spaced />
-    <q-layout class="LabelItem row items-start q-gutter-md justify-center LayoutStyle">
+    <q-layout class="LabelItem row no-padding items-start q-gutter-md justify-center ">
       <Cards
         v-for="title in renderTitle"
         :key="title.id"
@@ -49,10 +58,6 @@ export default defineComponent({
       type: String,
       required: true
     },
-    // renderTitle: {
-    //   type: Object,
-    //   required: true
-    // }
   },
   setup(){
     return{
@@ -67,6 +72,50 @@ export default defineComponent({
           description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
           end: true,
           authorName: "Jhon",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
+        },
+        {
+          id: 1,
+          img:"https://cdn.quasar.dev/img/parallax2.jpg",
+          link: "/test123",
+          title: "Test2",
+          like: 55,
+          view: 990,
+          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
+          end: false,
+          authorName: "Pitcher",
         },
         {
           id: 1,
@@ -154,14 +203,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
   .LabelName{
     font-style: italic;
     font-weight: 500;
     font-size: clamp(15px, 4vw, 20px);
-    padding: 0 clamp(2px, 2vw, 6px) clamp(2px, 2vw, 6px) clamp(2px, 2vw, 6px);
   }
   .LabelItem{
     align-items: center;
+    min-height: 100% !important;
+    padding-top: clamp(10px, 4vw, 20px) !important;
   }
   .LabelNameContainer{
     display: flex;
@@ -172,7 +223,7 @@ export default defineComponent({
     width: 100%;
     border: 2px solid transparent;
     border-radius: clamp(4px,1vw,6px);
-    padding: 10px 10px 20px 10px;
+    padding: 0 0 10px 0;
     margin-top: 20px;
   }
 </style>
