@@ -1,15 +1,15 @@
 <template>
-  <div class="q-page-container ContainerPopular AllContainer">
+  <q-list class="q-page-container AllContainer">
 
-    <div class="LabelNameContainer">
+    <q-item class="LabelNameContainer">
       <div class="LabelName">
         {{name}}
       </div>
-      <div v-if="displayType === 'Genres'" class="LabelName randomGenre">{{randomGenre}}</div>
-    </div>
+      <q-item-label v-if="displayType === 'Genres'" class="LabelName randomGenre">{{randomGenre}}</q-item-label>
+    </q-item>
 
     <q-separator spaced />
-    <div class="LabelItem row items-start q-gutter-md justify-center LayoutStyle">
+    <q-layout class="LabelItem row items-start q-gutter-md justify-center LayoutStyle">
       <Cards
         v-for="title in renderTitle"
         :key="title.id"
@@ -22,8 +22,8 @@
         :description="title.description"
         :author-name="title.authorName"
       />
-    </div>
-  </div>
+    </q-layout>
+  </q-list>
 
 </template>
 
@@ -154,9 +154,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .ContainerPopular{
-    background-color: #f4f4f4;
-  }
   .LabelName{
     font-style: italic;
     font-weight: 500;
@@ -171,7 +168,11 @@ export default defineComponent({
     flex-direction: row;
     justify-content: space-between;
   }
-  .randomGenre{
-    color: rgba(0,0,0,0.6);
+  .AllContainer{
+    width: 100%;
+    border: 2px solid transparent;
+    border-radius: clamp(4px,1vw,6px);
+    padding: 10px 10px 20px 10px;
+    margin-top: 20px;
   }
 </style>
