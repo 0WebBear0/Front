@@ -1,7 +1,7 @@
 <template>
   <q-list class="q-page-container AllContainer">
 
-    <q-item class="LabelNameContainer">
+    <q-item class="LabelNameContainer" v-if="name">
 
       <q-item-section class="LabelName">
         {{name}}
@@ -16,6 +16,23 @@
       </q-item-section>
 
     </q-item>
+
+    <q-item class="LabelNameContainer" v-if="search">
+
+      <q-item-section class="LabelName">
+        <ButtonDownDrop/>
+      </q-item-section>
+
+      <q-item-section
+        align="right"
+        v-if="displayType === 'Genres'"
+        class="LabelName randomGenre"
+      >
+        {{randomGenre}}
+      </q-item-section>
+
+    </q-item>
+
 
     <q-separator spaced />
     <q-layout class="LabelItem row no-padding items-start q-gutter-md justify-center ">
@@ -40,6 +57,7 @@
 import Cards from "components/molecule/Cards/Cards";
 
 import {defineComponent} from "vue";
+import ButtonDownDrop from "components/molecule/ButtonDownDrop";
 
 const Hours = new Date().getHours()
 const GetCountGenre = Hours % 10
@@ -47,6 +65,7 @@ const GetCountGenre = Hours % 10
 export default defineComponent({
   name: 'CardContainer',
   components: {
+    ButtonDownDrop,
     Cards
   },
   props: {
@@ -58,6 +77,10 @@ export default defineComponent({
       type: String,
       required: true
     },
+    search: {
+      type: Boolean,
+      required:true
+    }
   },
   setup(){
     return{
