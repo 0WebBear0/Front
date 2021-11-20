@@ -1,10 +1,10 @@
 <template>
-
+  Reader
 </template>
 
 <script>
 export default {
-  name: "ChapterList"
+  name: "MainReader"
 }
 </script>
 

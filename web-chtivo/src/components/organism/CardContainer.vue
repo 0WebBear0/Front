@@ -20,7 +20,7 @@
     <q-item class="LabelNameContainer" v-if="search">
 
       <q-item-section class="LabelName">
-        <ButtonDownDrop/>
+        <ButtonDownDrop name="Жанры" :arr="genre"/>
       </q-item-section>
 
       <q-item-section
@@ -80,8 +80,9 @@ export default defineComponent({
     search: {
       type: Boolean,
       required:true
-    }
+    },
   },
+
   setup(){
     return{
       renderTitle:[
@@ -217,9 +218,9 @@ export default defineComponent({
           end: false,
           authorName: "Pitcher",
         },
-
       ],
       randomGenre: GetCountGenre,
+      genre: [1,3,5,89,66,5,5552,554],
     }
   }
 })

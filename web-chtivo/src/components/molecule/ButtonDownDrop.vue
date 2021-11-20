@@ -8,7 +8,7 @@
               :key="id"
       >
         <q-item-section>
-          <q-item-label>{{data[key]}}</q-item-label>
+          <q-item-label>{{data}}</q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
@@ -21,7 +21,6 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ButtonDownDrop',
   components: {
-
   },
   props:{
     name: {
@@ -30,8 +29,13 @@ export default defineComponent({
     },
     Arr: {
       type: Array,
-      required: true
+      required: true,
     },
+  },
+  setup(){
+    return({
+      // Arr : [1,15,158]
+    })
   }
 })
 </script>
