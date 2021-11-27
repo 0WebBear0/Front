@@ -1,6 +1,6 @@
 <template>
   <q-card class="MyCard" tag="a" :href="link">
-    <q-img class="MyCardImg" :src="img">
+    <q-img :class="sizeCard" :src="img">
       <div class="absolute-top text TitleName nullification">
         {{title}}
       </div>
@@ -13,14 +13,17 @@
       <div class="absolute-bottom-right text TitleLike nullification">
         {{ like }}
       </div>
-        <div class="Description bg-blue-grey-1 text-black absolute">
-          <div class="MainInfoTitles">
-            <div class="TitleNameDescription">{{title}}</div>
-            <div class="authorName">{{authorName}}</div>
-            <q-separator />
-          </div>
+        <div class="DescriptionLittle bg-blue-grey-1 text-black absolute" v-if="sizeCard === 'MyCardImgLittle'">
           {{description}}
         </div>
+      <div class="Description bg-blue-grey-1 text-black absolute" v-if="sizeCard !== 'MyCardImgLittle'">
+        <div class="MainInfoTitles">
+          <div class="TitleNameDescription">{{title}}</div>
+          <div class="authorName">{{authorName}}</div>
+          <q-separator />
+        </div>
+        {{description}}
+      </div>
     </q-img>
   </q-card>
 </template>
@@ -66,6 +69,11 @@ export default defineComponent({
     img: {
       type: String,
       default: ''
+    },
+    sizeCard: {
+      type: String,
+      required: false,
+      default: "MyCardImg"
     }
   }
 })
@@ -76,6 +84,11 @@ export default defineComponent({
     width: clamp(90px, 20vw, 120px);
     height: clamp(135px, 30vw, 180px);
   }
+  .MyCardImgLittle {
+    transition-duration: 0.3s;
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(90px, 20vw, 120px);
+  }
   .MyCard{
     transition-duration: 0.3s;
     box-shadow: 6px 4px 5px 2px rgba(0, 0, 0, .2);
@@ -84,7 +97,11 @@ export default defineComponent({
     transition-duration: 0.3s;
     transform: scale(0.96);
   }
-  .MyCard:hover .Description{
+  .MyCard:hover .Description {
+    transition: all 2s linear;
+    display: flex;
+  }
+  .MyCard:hover .DescriptionLittle {
     transition: all 2s linear;
     display: flex;
   }
@@ -119,6 +136,18 @@ export default defineComponent({
     height: 100%;
     background-color: #fffde7;
     font-size: clamp(8px,3vw,12px);
+    display: none;
+  }
+  .DescriptionLittle{
+    transition-duration: 0.3s;
+    padding: 0 clamp(4px,2.5vw,7px) 0 clamp(5px,3vw,10px) !important;
+    color: #263238;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fffde7;
+    font-size: clamp(7px,2.5vw,9px);
     display: none;
   }
   .MainInfoTitles{

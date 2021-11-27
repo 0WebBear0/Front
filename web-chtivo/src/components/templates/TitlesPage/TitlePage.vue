@@ -24,8 +24,8 @@
     <div class="description-container">
         asdfsgjf kdjgl nsfdljg ndfljgn ljsdf ngljfdn lgjsdfn gljsdfn gljdnfljgndfsljgn ljfsngljdfn ljsfdn gljdfn gljdfsng ljdfsng ljfdgs lnfljgn sfljg
     </div>
-    <CardContainer name="герои"/>
-    <CardContainer name="похожие"/>
+    <CardContainer size-card="MyCardImgLittle" name="герои"/>
+    <CardContainer size-card="MyCardImgLittle" name="похожие"/>
   </div>
 </template>
 

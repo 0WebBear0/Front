@@ -47,6 +47,7 @@
         :img="title.img"
         :description="title.description"
         :author-name="title.authorName"
+        :size-card="sizeCard"
       />
     </q-layout>
   </q-list>
@@ -74,6 +75,10 @@ export default defineComponent({
       required: true
     },
     displayType: {
+      type: String,
+      required: true
+    },
+    sizeCard: {
       type: String,
       required: true
     },
