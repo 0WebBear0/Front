@@ -14,7 +14,7 @@ import ContentLayout from "components/templates/ContentTemplate/ContentLayout";
 
 
 export default defineComponent({
-  name: 'MainHomePage',
+  name: 'MainTitlePage',
   components: {
     ContentLayout,
     Header,

@@ -33,7 +33,7 @@
 
 import CardContainer from "components/organism/CardContainer";
 export default {
-  name: "TitlePage",
+  name: "EntityPage",
   components: {CardContainer},
 }
 </script>
