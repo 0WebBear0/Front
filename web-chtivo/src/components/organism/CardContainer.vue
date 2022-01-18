@@ -6,39 +6,13 @@
       <q-item-section class="LabelName">
         {{name}}
       </q-item-section>
-
-      <q-item-section
-        align="right"
-        v-if="displayType === 'Genres'"
-        class="LabelName randomGenre"
-      >
-        {{randomGenre}}
-      </q-item-section>
-
     </q-item>
-
-    <q-item class="LabelNameContainer" v-if="search">
-
-      <q-item-section class="LabelName">
-        <ButtonDownDrop name="Жанры" :arr="genre"/>
-      </q-item-section>
-
-      <q-item-section
-        align="right"
-        v-if="displayType === 'Genres'"
-        class="LabelName randomGenre"
-      >
-        {{randomGenre}}
-      </q-item-section>
-
-    </q-item>
-
 
     <q-separator spaced />
     <q-layout class="LabelItem row no-padding items-start q-gutter-md justify-center ">
       <Cards
-        v-for="title in renderTitle"
-        :key="title.id"
+        v-for="title in cardsArray"
+        :key="title"
         :title="title.title"
         :like="title.like"
         :end="title.end"
@@ -58,15 +32,11 @@
 import Cards from "components/molecule/Cards/Cards";
 
 import {defineComponent} from "vue";
-import ButtonDownDrop from "components/molecule/ButtonDownDrop";
 
-const Hours = new Date().getHours()
-const GetCountGenre = Hours % 10
 
 export default defineComponent({
   name: 'CardContainer',
   components: {
-    ButtonDownDrop,
     Cards
   },
   props: {
@@ -74,160 +44,15 @@ export default defineComponent({
       type: String,
       required: true
     },
-    displayType: {
-      type: String,
-      required: true
-    },
     sizeCard: {
       type: String,
       required: true
     },
-    search: {
-      type: Boolean,
-      required:true
-    },
-  },
-
-  setup(){
-    return{
-      renderTitle:[
-        {
-          id: 0,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test",
-          title: "Test1",
-          like: 10,
-          view: 100,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: true,
-          authorName: "Jhon",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 0,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test",
-          title: "Test1",
-          like: 10,
-          view: 100,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: true,
-          authorName: "Jhon",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 0,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test",
-          title: "Test1",
-          like: 10,
-          view: 100,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: true,
-          authorName: "Jhon",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-        {
-          id: 0,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test",
-          title: "Test1",
-          like: 10,
-          view: 100,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: true,
-          authorName: "Jhon",
-        },
-        {
-          id: 1,
-          img:"https://cdn.quasar.dev/img/parallax2.jpg",
-          link: "/test123",
-          title: "Test2",
-          like: 55,
-          view: 990,
-          description: "123456789pjqofsljdfj hsdkjf sdkj fkj dskbf kjdsb kjsbdfk dsk jbfkjdsbk fhbdfkjg bkfdg",
-          end: false,
-          authorName: "Pitcher",
-        },
-      ],
-      randomGenre: GetCountGenre,
-      genre: [1,3,5,89,66,5,5552,554],
+    cardsArray: {
+      type: Array,
+      required: true
     }
-  }
+  },
 })
 </script>
 
