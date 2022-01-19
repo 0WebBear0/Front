@@ -1,22 +1,25 @@
-const entity = [
+const title = [
   {
-    path: '/test',
+    path: '/title',
     component: () => import('components/pages/TitlesPage/MainTitlePage'),
     children: [
       {
-        path: '/test',
+        path: ':titleId',
+        name: 'titlePage',
         component: () => import('components/templates/EntityPages/EntityPage')
       },
       {
-        path: '/test/1',
+        path: ':titleId/test/',
+        name: 'chapters',
         component: () => import('components/templates/EntityPages/ChapterList'),
       },
       {
-        path: '/test/2',
+        path: ':titleId/test1/',
+        name: 'reader',
         component: () => import('components/templates/EntityPages/MainReader'),
       },
     ]
   },
 ]
 
-export default entity
+export default title

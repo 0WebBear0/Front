@@ -1,7 +1,9 @@
 <template>
   <div class="mainContainer">
     <div class="img-container">
-      <a href="/test/1"><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"/></a>
+      <a @click="$router.push({ name:'chapters', params: { titleId: this.$route.params.titleId }})">
+        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg"/>
+      </a>
     </div>
     <div class="title-container">
       <h5 class="Naming">Название</h5>

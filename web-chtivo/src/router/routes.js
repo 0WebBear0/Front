@@ -1,5 +1,5 @@
 import homePages from "src/router/HomePages";
-import entity from "src/router/entitys";
+import title from "src/router/titles";
 
 const main = [
   {
@@ -9,7 +9,7 @@ const main = [
   },
 ]
 
-const routes = [...main, ...homePages, ...entity]
+const routes = [...main, ...homePages, ...title]
 
 
 

@@ -1,5 +1,5 @@
 <template>
-  <q-card class="MyCard" tag="a" :href="link">
+  <q-card class="MyCard" tag="a" :href="titleLink">
     <q-img :class="sizeCard" :src="imgSrc" v-if="img !== '' && img !== null && img !== undefined">
       <div class="absolute-top text TitleName nullification">
         {{title}}
@@ -63,6 +63,7 @@ export default defineComponent({
   name: 'Cards',
   setup () {
     return {
+      titleLink : ref('title/'),
       imgSrc : ref('http://127.0.0.1:8000'),
       noImg : noImg
     }
@@ -108,6 +109,7 @@ export default defineComponent({
   },
   created() {
     this.imgSrc += this.img
+    this.titleLink += this.link
     console.log(this.img)
   },
 })
