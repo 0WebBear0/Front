@@ -13,14 +13,14 @@
       <Cards
         v-for="title in cardsArray"
         :key="title"
-        :title="title.title"
-        :like="title.like"
+        :title="title.title_Name"
+        :like="title.add_in_playlist"
         :end="title.end"
-        :link="title.link"
-        :view="title.view"
-        :img="title.img"
+        :link="title.id"
+        :view="title.views"
+        :img="title.cover_Img"
         :description="title.description"
-        :author-name="title.authorName"
+        :author-name="title.author"
         :size-card="sizeCard"
       />
     </q-layout>

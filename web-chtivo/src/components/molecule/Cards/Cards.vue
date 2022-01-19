@@ -1,6 +1,32 @@
 <template>
   <q-card class="MyCard" tag="a" :href="link">
-    <q-img :class="sizeCard" :src="img">
+    <q-img :class="sizeCard" :src="imgSrc" v-if="img !== '' && img !== null && img !== undefined">
+      <div class="absolute-top text TitleName nullification">
+        {{title}}
+      </div>
+      <div v-if="end" class="absolute-center text TitleEnd nullification">
+            <q-icon name="done_all" size="300%"/>
+      </div>
+      <div class="absolute-bottom-left text TitleViews nullification">
+        {{ view }}
+      </div>
+      <div class="absolute-bottom-right text TitleLike nullification">
+        {{ like }}
+      </div>
+        <div class="DescriptionLittle bg-blue-grey-1 text-black absolute" v-if="sizeCard === 'MyCardImgLittle'">
+          {{description}}
+        </div>
+      <div class="Description bg-blue-grey-1 text-black absolute" v-if="sizeCard !== 'MyCardImgLittle'">
+        <div class="MainInfoTitles">
+          <div class="TitleNameDescription">{{title}}</div>
+          <div class="authorName">{{authorName}}</div>
+          <q-separator />
+        </div>
+        {{description}}
+      </div>
+    </q-img>
+    <q-img :class="sizeCard" v-else
+           :src="noImg">
       <div class="absolute-top text TitleName nullification">
         {{title}}
       </div>
@@ -29,12 +55,16 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import {defineComponent, ref} from 'vue'
+
+import noImg from "src/assets/noImgpng.png"
 
 export default defineComponent({
   name: 'Cards',
   setup () {
     return {
+      imgSrc : ref('http://127.0.0.1:8000'),
+      noImg : noImg
     }
   },
   props: {
@@ -75,7 +105,11 @@ export default defineComponent({
       required: false,
       default: "MyCardImg"
     }
-  }
+  },
+  created() {
+    this.imgSrc += this.img
+    console.log(this.img)
+  },
 })
 </script>
 <style scoped>
