@@ -3,5 +3,6 @@ export default function () {
     allTitle: null,
     titleById: null,
     chapters: null,
+    chapterImages: null,
   }
 }

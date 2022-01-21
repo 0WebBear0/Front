@@ -8,7 +8,11 @@ export function getTitleById( state ) {
 }
 
 
-
 export function getChapters( state ) {
   return state.chapters
+}
+
+
+export function getChapterImages( state ) {
+  return state.chapterImages
 }

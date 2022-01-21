@@ -36,3 +36,16 @@ export async function uploadChapters ({commit}, id) {
       console.log(error)
     });
 }
+
+
+export async function uploadChapterImages ({commit}, id) {
+  $api.get("titles/chapter/"+ id )
+    .then((response) => {
+      if (response.status === 200){
+        commit('SAVE_CHAPTER_IMG', response.data)
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+}
