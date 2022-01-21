@@ -95,7 +95,7 @@ export default defineComponent({
     },
     link: {
       type: String,
-      default: '#'
+      default: ''
     },
     img: {
       type: String,
@@ -110,7 +110,6 @@ export default defineComponent({
   created() {
     this.imgSrc += this.img
     this.titleLink += this.link
-    console.log(this.img)
   },
 })
 </script>

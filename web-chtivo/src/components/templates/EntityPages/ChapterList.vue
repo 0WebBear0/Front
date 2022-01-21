@@ -1,12 +1,16 @@
 <template>
-  <q-list bordered separator>
+  <q-list bordered separator v-if="this.getChapters !== null">
     <q-item
+        v-for="item in this.getChapters"
+        :key="item.chapter_Number"
         clickable
         v-ripple
-        :active="active"
-        @click="$router.push({ name:'reader', params: { titleId: this.$route.params.titleId }})"
+        @click="$router.push({ name:'reader', params: {
+          titleId: this.$route.params.titleId,
+           chapterId: item.chapter_Number }
+        })"
     >
-      <q-item-section side>Глава #123</q-item-section>
+      <q-item-section side>Глава #{{item.chapter_Number}}</q-item-section>
       <q-item-section>Active</q-item-section>
       <q-item-section side>Side</q-item-section>
     </q-item>
@@ -14,8 +18,19 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from "vuex";
+
 export default {
-  name: "ChapterList"
+  name: "ChapterList",
+  created() {
+    this.uploadChapters(this.$route.params.titleId)
+  },
+  computed:{
+    ...mapGetters('Titles', ['getChapters'])
+  },
+  methods: {
+    ...mapActions('Titles', ['uploadChapters']),
+  },
 }
 </script>
 

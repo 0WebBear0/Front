@@ -9,12 +9,12 @@ const title = [
         component: () => import('components/templates/EntityPages/EntityPage')
       },
       {
-        path: ':titleId/test/',
+        path: ':titleId/chapters/',
         name: 'chapters',
         component: () => import('components/templates/EntityPages/ChapterList'),
       },
       {
-        path: ':titleId/test1/',
+        path: ':titleId/chapters/:chapterId',
         name: 'reader',
         component: () => import('components/templates/EntityPages/MainReader'),
       },

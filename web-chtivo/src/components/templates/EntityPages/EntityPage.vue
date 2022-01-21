@@ -1,30 +1,23 @@
 <template>
-  <div class="mainContainer">
+  <div class="mainContainer" v-if="this.getTitleById !== null">
     <div class="img-container">
       <a @click="$router.push({ name:'chapters', params: { titleId: this.$route.params.titleId }})">
-        <q-img src="https://cdn.quasar.dev/img/parallax2.jpg"/>
+        <q-img :src="imgSrc" v-if="this.getTitleById.cover_Img !== '' &&
+          this.getTitleById.cover_Img !== null &&
+          this.getTitleById.cover_Img !== undefined"/>
+        <q-img v-else :src="noImg"/>
       </a>
     </div>
     <div class="title-container">
-      <h5 class="Naming">Название</h5>
-      <div>
-        Повседневность боевик жанры
+      <h5 class="Naming">{{this.getTitleById.title_Name}}</h5>
+      <div v-for="genre in this.getTitleById.genre" :key=genre>
+        {{genre}}
       </div>
-      <div> 5 / 10</div>
+      <div>{{this.getTitleById.rating}}/10</div>
       <q-separator/>
-      <div class="table">
-        <div class="row" style="justify-content: space-between">
-          <div>asdafs</div>
-          <div>safa6s5f</div>
-        </div>
-        <div class="row" style="justify-content: space-between">
-          <div>asdafs</div>
-          <div>safa6s5f</div>
-        </div>
-      </div>
     </div>
     <div class="description-container">
-        asdfsgjf kdjgl nsfdljg ndfljgn ljsdf ngljfdn lgjsdfn gljsdfn gljdnfljgndfsljgn ljfsngljdfn ljsfdn gljdfn gljdfsng ljdfsng ljfdgs lnfljgn sfljg
+      {{this.getTitleById.description}}
     </div>
     <CardContainer size-card="MyCardImgLittle" name="герои"/>
     <CardContainer size-card="MyCardImgLittle" name="похожие"/>
@@ -34,9 +27,33 @@
 <script>
 
 import CardContainer from "components/organism/CardContainer";
+import {mapActions, mapGetters} from "vuex";
+import {ref} from "vue";
+import noImg from "assets/noImgpng.png";
+
 export default {
   name: "EntityPage",
   components: {CardContainer},
+  created() {
+    this.uploadTitleByID(this.$route.params.titleId)
+  },
+  computed:{
+    ...mapGetters('Titles', ['getTitleById'])
+  },
+  methods: {
+    ...mapActions('Titles', ['uploadTitleByID']),
+  },
+  setup () {
+    return {
+      imgSrc : ref('http://127.0.0.1:8000'),
+      noImg : noImg
+    }
+  },
+  watch:{
+    getTitleById(newData){
+      this.imgSrc += newData.cover_Img
+    }
+  }
 }
 </script>
 
