@@ -1,23 +1,21 @@
 import axios from "axios";
 import {API_URL} from "src/JWT/MainConstants";
-import identifyService from "src/JWT/SavesAnotherData";
 
 const $api = axios.create({
   baseURL: API_URL,
   responseType: "json",
   withCredentials: false,
-  // headers: {
-  //   "Access-Control-Allow-Origin": "*",
-  //   "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-  //   "Content-Type": "application/json",
-  // },
 })
 
-//input
-// $api.interceptors.request.use(config =>{
-//   config.headers.Authorization = identifyService.getAcsses()
-//   return config
-// })
+// input
+$api.interceptors.request.use(config =>{
+  config.headers = {
+    'Authorization': `Bearer ${localStorage.getItem('access')}`,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  return config
+})
 
 //output
 // $api.interceptors.response.use(response =>{
